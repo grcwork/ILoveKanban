@@ -39,12 +39,20 @@
         async function changeTaskStatus(_id, newStatus) {
             await axios.patch('/task/move', {taskId: _id, newStatus: newStatus})
                 .then(function (response) {
-                   window.location.reload()
+                    window.location.reload()
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         }
+    </script>
+
+    <script>
+        $('.task-description').bind('input propertychange', async function() {
+            taskId = $(this).attr("data-note-id");
+            newDescription = this.value;
+            await axios.patch('/task/edit', {taskId: taskId, newDescription: newDescription});
+        });
     </script>
 
 </body>

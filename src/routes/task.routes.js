@@ -5,5 +5,6 @@ const task = require("../controllers/task.controller");
 
 router.patch('/move/', task.moveTask);
 
+router.patch('/edit/', task.editTask);
 
 module.exports = router;

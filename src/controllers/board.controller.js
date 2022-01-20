@@ -8,9 +8,10 @@ boardCtrl.getBoardTasks = async (req, res) => {
     const { id } = req.params;
 
     const boards = await Board.find({});
+    const board = await Board.findById(id);
     const tasks = await Task.find({id_board: id});
 
-    res.render('index', {boards: boards , tasks: tasks });
+    res.render('index', {boards: boards , board: board, tasks: tasks});
 };
 
 boardCtrl.getBoards = async (req, res) => {

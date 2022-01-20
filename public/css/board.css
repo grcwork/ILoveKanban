@@ -13,6 +13,7 @@
 
 .tasks-container {
     padding-top: 0px;
+    width: 100%;
 }
 
 .todo:hover, .in-progress:hover, .done:hover{
@@ -23,13 +24,10 @@
 
 .task {
     margin: auto;
-    width: 70%;
+    width: 90%;
     background-color: white;
-    padding: 8px;
-    
     border-radius: 3px;
-    
-    border: solid 1px black;
+    box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .task:not(:last-child) {
@@ -45,6 +43,20 @@
     text-align: left;
     font-family: 'Mochiy Pop P One', sans-serif;
     font-size: 0.8em;
+    width: 95%;
+    margin: auto;
+    height: 150px;
+    resize: none;
+    border: none;
+    outline: none;
+}
+
+.task-buttons-container {
+    display: block;
+    margin: auto;
+    width: 80%;
+    margin-top: 5px;
+    text-align: center;
 }
 
 .mv-to-ip-btn {

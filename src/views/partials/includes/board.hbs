@@ -1,4 +1,4 @@
-<h2>{{title}}</h2>
+<h2>{{board.title}}</h2>
 <div class="board">
     <div class="todo">
         <h3 class="card-title">Todo</h3>
@@ -6,9 +6,12 @@
             {{#each tasks}}
             {{#ifeq status "todo"}}
             <div class="task">
-                <p class="task-description">{{description}}</p>
-                <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">In progress</button>
-                <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">Done</button>
+                <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
+                <div class="task-buttons-container">
+                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">In
+                        progress</button>
+                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">Done</button>
+                </div>
             </div>
             {{/ifeq}}
             {{/each}}
@@ -20,9 +23,11 @@
             {{#each tasks}}
             {{#ifeq status "in progress"}}
             <div class="task">
-                <p class="task-description">{{description}}</p>
-                <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">Todo</button>
-                <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">Done</button>
+                <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
+                <div class="task-buttons-container">
+                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">Todo</button>
+                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">Done</button>
+                </div>
             </div>
             {{/ifeq}}
             {{/each}}
@@ -34,9 +39,11 @@
             {{#each tasks}}
             {{#ifeq status "done"}}
             <div class="task">
-                <p class="task-description">{{description}}</p>
-                <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">Todo</button>
-                <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">In progress</button>
+                <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
+                <div class="task-buttons-container">
+                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">Todo</button>
+                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">In progress</button>
+                </div>
             </div>
             {{/ifeq}}
             {{/each}}
