@@ -1,0 +1,36 @@
+* {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+body {
+  background: #F0F6F6;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 1fr 10fr 1fr;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.vertical-nav {
+  align-self: center;
+  justify-self: center;
+  margin: 10px;
+  text-align: justify;
+  font-size: 1.2em;
+}
+
+.proyect-board {
+  align-self: center;
+  justify-self: center;
+  width: 100%;
+}
+
+.main-container {
+  width: 80%;
+  margin: auto;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Mochiy Pop P One', sans-serif;
+}
