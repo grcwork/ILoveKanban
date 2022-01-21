@@ -1,10 +1,14 @@
 <ul class="main-nav">
 
     {{#each boards}}
-    <li class=" main-nav-item">
+    <li class="main-nav-item">
+        <button  onclick="deleteBoard('{{_id}}', '{{title}}')" class="delete-board-btn">❌</button>
         <a href="/board/{{_id}}">
             {{title.[0]}}
         </a>
     </li>
     {{/each}}
+    <li class="main-nav-item add-new-board">
+        <button class="add-new-board-btn" onclick="addNewBoard()" >➕</button>
+    </li>
 </ul>

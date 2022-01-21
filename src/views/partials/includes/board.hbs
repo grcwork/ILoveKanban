@@ -7,7 +7,7 @@
             {{#each tasks}}
             {{#ifeq status "todo"}}
             <div class="task">
-                <button onclick="deleteTask('{{_id}}')" >❌</button>
+                <button class="delete-task-btn" onclick="deleteTask('{{_id}}')" >❌</button>
                 <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
                 <div class="task-buttons-container">
                     <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">🚧</button>
@@ -25,10 +25,10 @@
             {{#each tasks}}
             {{#ifeq status "in progress"}}
             <div class="task">
-                <button onclick="deleteTask('{{_id}}')" >❌</button>
+                <button class="delete-task-btn" onclick="deleteTask('{{_id}}')" >❌</button>
                 <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
                 <div class="task-buttons-container">
-                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">📝</button>
+                    <button class="mv-to-todo-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">📝</button>
                     <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">✔️</button>
                 </div>
             </div>
@@ -43,11 +43,11 @@
             {{#each tasks}}
             {{#ifeq status "done"}}
             <div class="task">
-                <button onclick="deleteTask('{{_id}}')" >❌</button>
+                <button class="delete-task-btn" onclick="deleteTask('{{_id}}')" >❌</button>
                 <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
                 <div class="task-buttons-container">
-                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">📝</button>
-                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">🚧</button>
+                    <button class="mv-to-todo-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">📝</button>
+                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">🚧</button>
                 </div>
             </div>
             {{/ifeq}}

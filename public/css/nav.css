@@ -16,13 +16,43 @@
     color: white;
 }
 
+.add-new-board-btn {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    background-color: #084B83;
+    border-radius: 50%;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+    border: none;
+}
+
 .main-nav-item:not(:last-child) {
     margin-bottom: 10px;
 }
 
-.main-nav-item a:hover {
+.main-nav-item a:hover, .add-new-board-btn:hover {
     border-radius: 30%;
     background-color: #42BFDD;
     transition: border-radius 0.4s;
     color: black;
+}
+
+.delete-board-btn {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+}
+
+.delete-board-btn:hover {
+    background-color: rgb(248, 42, 42);
+    cursor: pointer;
+}
+
+.main-nav-item {
+    display: flex;
+    align-items: center;
+    gap: 1px;
 }

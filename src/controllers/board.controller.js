@@ -22,4 +22,19 @@ boardCtrl.getBoards = async (req, res) => {
 
 };
 
+boardCtrl.addNewEmptyBoard = async (req, res) => {
+    const newBoard = new Board({
+        title: 'New Proyect'
+    });
+    await newBoard.save();
+    res.send({redirect: `/board/${newBoard.id}`});
+};
+
+boardCtrl.deleteBoard = async (req, res) => {
+    const { id } = req.params;
+    await Board.deleteOne({_id: id});
+    await Task.deleteMany({id_board: id});
+    res.send({});
+};
+
 module.exports = boardCtrl;

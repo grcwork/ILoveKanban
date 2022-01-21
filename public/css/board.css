@@ -59,13 +59,14 @@
     text-align: center;
 }
 
-.mv-to-ip-btn {
+.mv-to-todo-btn, .mv-to-ip-btn, .mv-to-done-btn {
     display: inline;
 }
 
-.mv-to-done-btn {
-    display: inline;
+.mv-to-todo-btn:hover, .mv-to-ip-btn:hover, .mv-to-done-btn:hover {
+    cursor: pointer;
 }
+
 
 .add-task-btn {
     border-radius: 50%;
@@ -77,5 +78,9 @@
 
 .add-task-btn:hover {
     background-color: rgb(157, 235, 80);
+    cursor: pointer;
+}
+
+.delete-task-btn:hover {
     cursor: pointer;
 }

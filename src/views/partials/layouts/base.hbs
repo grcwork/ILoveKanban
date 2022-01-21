@@ -10,6 +10,9 @@
     <!-- jQuery CDN -->
     <script src="https://code.jquery.com/jquery-3.5.0.js"></script>
 
+    <!-- SweetAlert CDN -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="/css/nav.css" />
     <link rel="stylesheet" type="text/css" href="/css/index.css" />
@@ -36,8 +39,8 @@
 
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
-        async function changeTaskStatus(_id, newStatus) {
-            await axios.patch('/task/move', { taskId: _id, newStatus: newStatus })
+        function changeTaskStatus(_id, newStatus) {
+            axios.patch('/task/move', { taskId: _id, newStatus: newStatus })
                 .then(function (response) {
                     window.location.reload()
                 })
@@ -48,23 +51,73 @@
     </script>
 
     <script>
-        $('.task-description').bind('input propertychange', async function () {
+        $('.task-description').bind('input propertychange', function () {
             taskId = $(this).attr("data-note-id");
             newDescription = this.value;
-            await axios.patch('/task/edit', { taskId: taskId, newDescription: newDescription });
+            axios.patch('/task/edit', { taskId: taskId, newDescription: newDescription });
         });
     </script>
 
     <script>
-        async function addNewTask(idBoard, status) {
-            await axios.post('/task/add', { idBoard, status });
-            window.location.reload()
+        function addNewTask(idBoard, status) {
+            axios.post('/task/add', { idBoard, status })
+                .then(function (response) {
+                    window.location.reload()
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
         }
     </script>
     <script>
-        async function deleteTask(idTask) {
-            await axios.delete('/task/delete', { data: { idTask } });
-            window.location.reload();
+        function deleteTask(idTask) {
+            axios.delete('/task/delete', { data: { idTask } })
+                .then(function (response) {
+                    window.location.reload()
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    </script>
+    <script>
+        function addNewBoard() {
+            axios.post('/board/add')
+                .then(function (response) {
+                    window.location = response.data.redirect;
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+        }
+    </script>
+    <script>
+        function deleteBoard(Idboard, boardTitle) {
+            swal({
+                title: "Are you sure?",
+                text: `Are you sure you want to delete the '${boardTitle}' board?`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        axios.delete(`/board/delete/${Idboard}`)
+                            .then(function (response) {
+                                swal("The board has been deleted!", {
+                                    icon: "success",
+                                })
+                                    .then(() => {
+                                        window.location = '/board/'
+                                    });
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    } else {
+                        swal("Your board is safe!");
+                    }
+                });
         }
     </script>
 </body>
