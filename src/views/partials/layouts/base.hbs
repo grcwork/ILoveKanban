@@ -120,6 +120,20 @@
                 });
         }
     </script>
+
+    <script>
+        $('.board-title').focusout(function () {
+            boardId = $(this).attr("data-board-id");
+            newTitle = this.value;
+            axios.patch('/board/edit', { boardId: boardId, newTitle: newTitle })
+            .then((response) => {
+                window.location.reload();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+        });
+    </script>
 </body>
 
 </html>

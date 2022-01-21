@@ -37,4 +37,10 @@ boardCtrl.deleteBoard = async (req, res) => {
     res.send({});
 };
 
+boardCtrl.editBoard = async (req, res) => {
+    const { boardId,  newTitle} = req.body;
+    await Board.updateOne({_id: boardId}, {title: newTitle});
+    res.send({});
+};
+
 module.exports = boardCtrl;

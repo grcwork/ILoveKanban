@@ -15,5 +15,7 @@ router.post("/add/", board.addNewEmptyBoard);
 // Delete board
 router.delete("/delete/:id", board.deleteBoard);
 
+// Edit board (title)
+router.patch("/edit/", board.editBoard);
 
 module.exports = router;
