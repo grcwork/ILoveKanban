@@ -37,7 +37,7 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script>
         async function changeTaskStatus(_id, newStatus) {
-            await axios.patch('/task/move', {taskId: _id, newStatus: newStatus})
+            await axios.patch('/task/move', { taskId: _id, newStatus: newStatus })
                 .then(function (response) {
                     window.location.reload()
                 })
@@ -48,13 +48,25 @@
     </script>
 
     <script>
-        $('.task-description').bind('input propertychange', async function() {
+        $('.task-description').bind('input propertychange', async function () {
             taskId = $(this).attr("data-note-id");
             newDescription = this.value;
-            await axios.patch('/task/edit', {taskId: taskId, newDescription: newDescription});
+            await axios.patch('/task/edit', { taskId: taskId, newDescription: newDescription });
         });
     </script>
 
+    <script>
+        async function addNewTask(idBoard, status) {
+            await axios.post('/task/add', { idBoard, status });
+            window.location.reload()
+        }
+    </script>
+    <script>
+        async function deleteTask(idTask) {
+            await axios.delete('/task/delete', { data: { idTask } });
+            window.location.reload();
+        }
+    </script>
 </body>
 
 </html>

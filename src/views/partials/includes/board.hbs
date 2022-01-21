@@ -1,16 +1,17 @@
 <h2>{{board.title}}</h2>
 <div class="board">
     <div class="todo">
+        <button class="add-task-btn" onclick="addNewTask('{{board._id}}', 'todo')">➕</button>
         <h3 class="card-title">Todo</h3>
         <div class="tasks-container">
             {{#each tasks}}
             {{#ifeq status "todo"}}
             <div class="task">
+                <button onclick="deleteTask('{{_id}}')" >❌</button>
                 <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
                 <div class="task-buttons-container">
-                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">In
-                        progress</button>
-                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">Done</button>
+                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">🚧</button>
+                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">✔️</button>
                 </div>
             </div>
             {{/ifeq}}
@@ -18,15 +19,17 @@
         </div>
     </div>
     <div class="in-progress">
+        <button class="add-task-btn" onclick="addNewTask('{{board._id}}', 'in progress')">➕</button>
         <h3 class="card-title">In progress</h3>
         <div class="tasks-container">
             {{#each tasks}}
             {{#ifeq status "in progress"}}
             <div class="task">
+                <button onclick="deleteTask('{{_id}}')" >❌</button>
                 <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
                 <div class="task-buttons-container">
-                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">Todo</button>
-                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">Done</button>
+                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">📝</button>
+                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'done')">✔️</button>
                 </div>
             </div>
             {{/ifeq}}
@@ -34,15 +37,17 @@
         </div>
     </div>
     <div class="done">
+        <button class="add-task-btn" onclick="addNewTask('{{board._id}}', 'done')">➕</button>
         <h3 class="card-title">Done</h3>
         <div class="tasks-container">
             {{#each tasks}}
             {{#ifeq status "done"}}
             <div class="task">
+                <button onclick="deleteTask('{{_id}}')" >❌</button>
                 <textarea spellcheck="false" class="task-description" data-note-id="{{_id}}">{{description}}</textarea>
                 <div class="task-buttons-container">
-                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">Todo</button>
-                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">In progress</button>
+                    <button class="mv-to-ip-btn" onclick="changeTaskStatus('{{_id}}', 'todo')">📝</button>
+                    <button class="mv-to-done-btn" onclick="changeTaskStatus('{{_id}}', 'in progress')">🚧</button>
                 </div>
             </div>
             {{/ifeq}}
