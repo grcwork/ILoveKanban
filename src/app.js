@@ -30,7 +30,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 // Static files
-app.use(express.static(path.join(__dirname, "..", "public")));
+app.use("/static", express.static(path.join(__dirname, "..", "public")));
 
 // Board routes
 app.use("/board", require("./routes/board.routes"));
