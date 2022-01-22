@@ -16,6 +16,10 @@ hbs.registerHelper("ifeq", function (value1, value2, options) {
   return value1 == value2 ? options.fn(this) : options.inverse(this);
 });
 
+hbs.registerHelper("getFirstCharOfString", function (string) {
+  return string[0];
+});
+
 // Set views directory and view engine
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
