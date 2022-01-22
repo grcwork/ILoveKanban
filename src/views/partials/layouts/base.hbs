@@ -74,12 +74,30 @@
     </script>
     <script>
         function deleteTask(idTask) {
-            axios.delete('/task/delete', { data: { idTask } })
-                .then(function (response) {
-                    window.location.reload()
-                })
-                .catch(function (error) {
-                    console.log(error);
+             swal({
+                title: "Are you sure?",
+                text: `Are you sure you want to delete the task?`,
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+                .then((willDelete) => {
+                    if (willDelete) {
+                        axios.delete('/task/delete', { data: { idTask } })
+                            .then(function (response) {
+                                swal("The task has been deleted!", {
+                                    icon: "success",
+                                })
+                                    .then(() => {
+                                        window.location.reload();
+                                    });
+                            })
+                            .catch(function (error) {
+                                console.log(error);
+                            });
+                    } else {
+                        swal("Your task is safe!");
+                    }
                 });
         }
     </script>
