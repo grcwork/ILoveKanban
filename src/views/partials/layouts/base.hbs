@@ -27,6 +27,7 @@
 
 <body>
     <div class="main-container">
+
         {{#> content}}
         {{/content}}
 
@@ -128,19 +129,23 @@
             boardId = $(this).attr("data-board-id");
             newTitle = this.value;
             axios.patch('/board/edit', { boardId: boardId, newTitle: newTitle })
-            .then((response) => {
-                window.location.reload();
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+                .then((response) => {
+                    window.location.reload();
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         });
     </script>
 
     <script>
         function drawCircleLoader() {
-            completionRate = $('#circularloadingTool').attr("data-board");
-            console.log(completionRate);
+            completionRate = Number($('#circularloadingTool').attr("data-board"));
+
+            if (Number.isNaN(completionRate)) {
+                return;
+            }
+
             let ctx = document.getElementById('circularloadingTool').getContext('2d');
             ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
             ctx.lineWidth = 15;
@@ -148,12 +153,12 @@
             ctx.strokeStyle = '#2CF6B3'
             ctx.textAlign = 'center';
             ctx.font = '20px monospace';
-            ctx.fillText(`${Math.floor(completionRate*100)}%`, ctx.canvas.width*0.5, ctx.canvas.height*0.5)
+            ctx.fillText(`${Math.floor(completionRate * 100)}%`, ctx.canvas.width * 0.5, ctx.canvas.height * 0.5)
             ctx.beginPath();
-            ctx.arc(80, 80, 50, -Math.PI/2, 2*Math.PI*completionRate - Math.PI/2);
+            ctx.arc(80, 80, 50, -Math.PI / 2, 2 * Math.PI * completionRate - Math.PI / 2);
             ctx.stroke();
         }
-        
+
         $(document).ready(function () {
             drawCircleLoader();
         });

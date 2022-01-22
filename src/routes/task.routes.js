@@ -3,12 +3,12 @@ const router = express.Router();
 
 const task = require("../controllers/task.controller");
 
-router.patch('/move/', task.moveTask);
+router.patch("/move/", task.moveTask);
 
-router.patch('/edit/', task.editTask);
+router.patch("/edit/", task.editTask);
 
-router.post('/add/', task.addNewEmptyTask);
+router.post("/add/", task.addNewEmptyTask);
 
-router.delete('/delete/', task.deleteTask);
+router.delete("/delete/", task.deleteTask);
 
 module.exports = router;
