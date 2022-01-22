@@ -33,7 +33,9 @@
         <div class="wrapper">
             <div class="vertical-nav">{{>includes/nav}}</div>
             <div class="proyect-board">{{>includes/board}}</div>
-            <div></div>
+            <div id="circularloadingToolContainer">
+                <canvas data-board="{{completionRate}}" id="circularloadingTool" width="160" height="160"></canvas>
+            </div>
         </div>
     </div>
 
@@ -132,6 +134,28 @@
             .catch((error) => {
                 console.log(error);
             });
+        });
+    </script>
+
+    <script>
+        function drawCircleLoader() {
+            completionRate = $('#circularloadingTool').attr("data-board");
+            console.log(completionRate);
+            let ctx = document.getElementById('circularloadingTool').getContext('2d');
+            ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
+            ctx.lineWidth = 15;
+            ctx.fillStyle = '#2CF6B3';
+            ctx.strokeStyle = '#2CF6B3'
+            ctx.textAlign = 'center';
+            ctx.font = '20px monospace';
+            ctx.fillText(`${Math.floor(completionRate*100)}%`, ctx.canvas.width*0.5, ctx.canvas.height*0.5)
+            ctx.beginPath();
+            ctx.arc(80, 80, 50, -Math.PI/2, 2*Math.PI*completionRate - Math.PI/2);
+            ctx.stroke();
+        }
+        
+        $(document).ready(function () {
+            drawCircleLoader();
         });
     </script>
 </body>

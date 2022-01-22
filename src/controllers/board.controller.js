@@ -11,7 +11,18 @@ boardCtrl.getBoardTasks = async (req, res) => {
     const board = await Board.findById(id);
     const tasks = await Task.find({id_board: id});
 
-    res.render('index', {boards: boards , board: board, tasks: tasks});
+    let completionRate = 0;
+    let totalTasks = tasks.length;
+    let completedTasks = 0;
+
+    for (let i = 0; i < totalTasks; i++) {
+        if (tasks[i].status == 'done') {
+            completedTasks++;
+        }
+    }
+    completionRate = completedTasks / totalTasks; 
+
+    res.render('index', {boards , board, tasks, completionRate});
 };
 
 boardCtrl.getBoards = async (req, res) => {
