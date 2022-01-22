@@ -3,11 +3,24 @@
   display: inline;
 }
 
-.main-nav-item a {
+.main-nav-item a.non-selected-board {
   display: flex;
   width: 60px;
   height: 60px;
   background-color: #2f52e0;
+  border-radius: 50%;
+
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  color: white;
+}
+
+.main-nav-item a.selected-board {
+  display: flex;
+  width: 60px;
+  height: 60px;
+  background-color: #f64740;
   border-radius: 50%;
 
   justify-content: center;
@@ -33,12 +46,17 @@
   margin-bottom: 10px;
 }
 
-.main-nav-item a:hover,
+.main-nav-item a.non-selected-board:hover,
 .add-new-board-btn:hover {
   border-radius: 30%;
   background-color: #42bfdd;
   transition: border-radius 0.4s;
   color: black;
+}
+
+.main-nav-item a.selected-board:hover {
+  border-radius: 30%;
+  transition: border-radius 0.4s;
 }
 
 .delete-board-btn {

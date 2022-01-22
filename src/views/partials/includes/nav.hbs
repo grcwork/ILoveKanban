@@ -1,12 +1,11 @@
 <ul class="main-nav">
-
   {{#each boards}}
     <li class="main-nav-item">
       <button
         onclick="deleteBoard('{{_id}}', '{{title}}')"
         class="delete-board-btn"
       >❌</button>
-      <a href="/board/{{_id}}">
+      <a href="/board/{{_id}}" {{#ifeq _id ../board.id}} class="selected-board" {{else}} class="non-selected-board" {{/ifeq}}>
         {{getFirstCharOfString title}}
       </a>
     </li>
