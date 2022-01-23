@@ -1,10 +1,10 @@
 # ILoveKanban
 
-A nice web app to organize proyects with an intuitive Kanban board
+A nice web app to organize projects with an intuitive Kanban board
 
 ![ILoveKanban](/readme_files/images/image1.png)
 
-## Tech stack to build this app
+## Tech stack used to build this app
 
 ### Frontend
 
@@ -19,6 +19,6 @@ A nice web app to organize proyects with an intuitive Kanban board
 
     - Node.js
     - Express
-    - HandleBars
+    - Handlebars
     - MongoDB
     - Mongoose
